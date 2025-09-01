@@ -8,7 +8,7 @@ This repository contains the code and dataset processing pipeline introduced in 
 
 > **From 3D Points to Drying Insight: Hierarchical Deep Learning on LiDAR-Based Geometry and Spectra**  
 > Majharulislam Babor, Arman Arefi, Barbara Sturm, Marina M.-C. Höhne, Manuela Zude-Sasse  
-> Submitted to *Biosystems Engineering* (2025).  
+> Submitted to *___* (2025).  
 
 ---
 
