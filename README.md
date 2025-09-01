@@ -1,8 +1,8 @@
 # VegPoint 🌱💧  
 **From 3D Points to Drying Insight: Hierarchical Deep Learning on LiDAR-Based Geometry and Spectra**
 
-% [![Paper](https://img.shields.io/badge/Paper-arXiv-green)](https://)  
-% [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)  
+[![Paper](https://img.shields.io/badge/Paper-arXiv-green)](https://)  (comming soon)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)  
 
 This repository contains the code and dataset processing pipeline introduced in our paper:  
 
