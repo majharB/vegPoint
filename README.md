@@ -1,4 +1,4 @@
-# VegPoint 🌱💧  
+# VegPoint 🌱💧  (under progress)
 **From 3D Points to Drying Insight: Hierarchical Deep Learning on LiDAR-Based Geometry and Spectra**
 
 [![Paper](https://img.shields.io/badge/Paper-arXiv-green)](https://)  (comming soon)
