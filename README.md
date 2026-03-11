@@ -1,5 +1,5 @@
 # VegPoint 🌱💧  (under progress)
-**From 3D Points to Drying Insight: Hierarchical Deep Learning on LiDAR-Based Geometry and Spectra**
+**Postharvest Moisture Prediction using LiDAR Point Clouds: Integrating 3D Structure and Spectral Intensity**
 
 [![Paper](https://img.shields.io/badge/Paper-arXiv-green)](https://)  (comming soon)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)  
