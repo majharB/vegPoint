@@ -1,4 +1,4 @@
-# VegPoint 🌱💧  (under progress)
+# VegPoint 🌱💧
 **Postharvest Moisture Prediction using LiDAR Point Clouds: Integrating 3D Structure and Spectral Intensity**
 
 [![Paper](https://img.shields.io/badge/Paper-arXiv-green)](https://)  (comming soon)
