@@ -1,57 +1,161 @@
 # VegPoint 🌱💧
 **Postharvest Moisture Prediction using LiDAR Point Clouds: Integrating 3D Structure and Spectral Intensity**
 
-[![Paper](https://img.shields.io/badge/Paper-arXiv-green)](https://)  (comming soon)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)  
+[![Paper](https://img.shields.io/badge/Paper-arXiv-green)](https://arxiv.org/abs/XXXX.XXXX) (coming soon)
+[![Dataset](https://img.shields.io/badge/DOI-10.5281/zenodo.19001042-blue)](https://doi.org/10.5281/zenodo.19001042)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-This repository contains the code and dataset processing pipeline introduced in our paper:  
+This repository contains the code and dataset processing pipeline for our paper:
 
 > **From 3D Points to Drying Insight: Hierarchical Deep Learning on LiDAR-Based Geometry and Spectra**  
 > Majharulislam Babor, Arman Arefi, Barbara Sturm, Marina M.-C. Höhne, Manuela Zude-Sasse  
-> Submitted to *___* (2025).  
+> *Submitted, 2025*
 
 ---
 
 ## 🌟 Overview
 
-Moisture content is a critical determinant of postharvest quality. Traditional sensing methods (e.g., hyperspectral, NIR) provide only 2D spectral information and fail to capture the **geometric heterogeneity** of agricultural products.  
+Moisture content is a critical quality parameter in postharvest storage. Traditional spectral sensors capture only 2D information and miss the **3D geometric heterogeneity** of produce.  
+**VegPoint** is the first annotated 3D LiDAR dataset for broccoli and mushroom, providing:
 
-**VegPoint** is the first annotated 3D LiDAR dataset for broccoli and mushroom, with per-segment (core vs. periphery) ground-truth moisture labels.  
-We provide:  
+- **3D point clouds** with intensity at 1320 nm, 1450 nm, and a dual‑wavelength prototype (PT).
+- **Per‑segment** moisture labels for core and periphery regions (high/medium/low classes).
+- A complete pipeline for preprocessing, augmentation, and deep learning with PointNet++.
 
-- 🥦 **Dataset**: 3D LiDAR point clouds with intensity at 1320 nm, 1450 nm, and a dual-wavelength prototype (PT).  
-- 🔧 **Pipeline**: Preprocessing (intensity smoothing, upright alignment, segmentation, augmentation).  
-- 🤖 **Models**: PointNet++-based classifiers for geometry, intensity, and fused modalities.  
-- 📊 **Evaluation**: 10-fold cross-validation, spatial transfer (core→periphery and vice versa), modality occlusion analysis.  
+Our work demonstrates that combining geometry and intensity improves moisture classification, especially under spatial transfer (core→periphery) and when one modality is occluded.
 
 ---
 
 ## 📂 Dataset
 
-Each sample is represented as a point cloud with 5,000 points:  
+Each sample is a point cloud of **5,000 points** (after resizing) with the following attributes:
 
-- **Geometry**: 3D coordinates (x, y, z)  
-- **Intensity**: Reflectance at each LiDAR wavelength  
-- **Segments**: Core and periphery regions (aligned to ground-truth MC measurements)  
-- **Moisture Classes**:  
-  - High MC (> 88%)  
-  - Medium MC (35–88%)  
-  - Low MC (< 35%)  
+| Field       | Description                                      |
+|-------------|--------------------------------------------------|
+| `x, y, z`   | 3D coordinates (normalized per segment)          |
+| `intensity` | Reflectance at the given LiDAR wavelength        |
+| `region`    | Core or periphery (derived from XY distance)     |
+| `moisture`  | Class: 0 (low, <35%), 1 (medium, 35‑88%), 2 (high, >88%) |
 
-👉 The dataset will be hosted [here](https://github.com/majharB/vegPoint/releases) (coming soon).  
+The dataset is available at Zenodo:
+
+🔗 [**10.5281/zenodo.19001042**](https://doi.org/10.5281/zenodo.19001042)
+
+After downloading, place the contents in `data/cloud/` following this structure:
+
+```bash
+data/
+├── cloud/
+│   ├── mushroom/
+│   │   ├── sample1/
+│   │   │   ├── a.csv # x,y,z and intensity at wavelength 1320 nm
+│   │   │   ├── b.csv # x,y,z and intensity at wavelength 1450 nm
+│   │   │   └── c.csv # x,y,z and intensity at moisture index (MI)
+│   │   ├── sample2/
+│   │   └── ...
+│   └── broccoli/
+│       ├── sample1/
+│       └── ...
+└── mc.csv # ground-truth moisture per sample & region
+```
+
+The file `mc.csv` must contain at least the columns: `sample_id`, `moisture_core`, `moisture_periphery`.
 
 ---
 
 ## ⚙️ Installation
 
+### 1. Clone the repository
 ```bash
-# Clone the repo
 git clone https://github.com/majharB/vegPoint.git
 cd vegPoint
-
-# Create a conda environment
+```
+### 2. Set up a virtual environment (conda or venv)
+```
 conda create -n vegpoint python=3.11
 conda activate vegpoint
-
-# Install requirements
+# or
+python -m venv vegpoint
+```
+### 3. Install dependencies
+```
 pip install -r requirements.txt
+```
+If you use a GPU, ensure PyTorch with CUDA is installed separately (see pytorch.org).
+
+🚀 Usage
+All experiments are organized as scripts in the scripts/ directory. The core modules are in src/ (package name pcdg).
+
+Data preparation
+The dataset is automatically loaded and preprocessed by src/pcdata.py when you run any training script. No manual preprocessing is needed.
+
+### 3. Training a model
+#### 3a. standard random split
+Train a PointNet++ model on a broccoli/ mushrooms and wavelength intensity with a simple train/val/test split:
+
+```
+source vegpoint/bin/activate
+python scripts/train.py \
+    --veg mushroom \
+    --channel a \
+    --split_method random \
+    --aug \
+    --epochs 30 \
+    --cuda 0
+```
+Options:
+
+--veg: mushroom, broccoli, or combine
+
+--channel: a, b, or c (intensity option)
+
+--split_method: random, core_periphery (train on core, test on periphery), periphery_core (reverse)
+
+--aug: enable data augmentation (rotation, scaling, jittering)
+
+--semi_supervised: (for spatial transfer) include a few labeled samples from the test domain in training (no data from target region was used in paper)
+
+--model: geo (only geometry) or geo_int (geometry + intensity)
+
+--epochs, --cuda, etc.
+
+#### 3b. Nested cross‑validation
+
+To perform 10‑fold nested CV with hyperparameter tuning (as used in the paper):
+
+```
+python scripts/cross_val.py \
+    --veg mushroom \
+    --channel a \
+    --aug \
+    --model geo_int \
+    --cuda 0 \
+    --n_splits 10 \
+    --epochs 30
+```
+
+The script saves per‑fold results (test indices, best config, losses, predictions) in results/folds/<veg>/. The inner loop trains each configuration for 10 epochs; the best configuration is then evaluated on the test set.
+
+#### 3c. Spatial transfer experiments
+Train on one region and evaluate on the other (core→periphery or periphery→core) as reported in the paper:
+```
+python scripts/train_spatial_transfer.py \
+    --veg broccoli \
+    --channel b \
+    --split_method core_periphery \
+    --aug \
+    --semi_supervised \
+    --model geo_int \
+    --epochs 30 \
+    --cuda 0
+```
+
+## 📝 Citation
+```
+@article{babor_2025_vegpoint,
+  title={From 3D Points to Drying Insight: Hierarchical Deep Learning on LiDAR-Based Geometry and Spectra},
+  author={Babor, M. and Arefi, A. and Sturm, B. and Höhne, M. M.-C. and Zude-Sasse, M.},
+  journal={},
+  year={2026}
+}
+```
