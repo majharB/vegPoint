@@ -33,7 +33,7 @@ Each sample is a point cloud of **5,000 points** (after resizing) with the follo
 | Field       | Description                                      |
 |-------------|--------------------------------------------------|
 | `x, y, z`   | 3D coordinates (normalized per segment)          |
-| `intensity` | Reflectance at the given LiDAR wavelength (1320 nm, 1450 nm or moisture index (MI)       |
+| `intensity` | Reflectance at the given LiDAR wavelength (1320 nm, 1450 nm or moisture index MI)       |
 | `region`    | Core or periphery (derived from XY distance)     |
 | `moisture`  | Class: 0 (low, <35%), 1 (medium, 35‑88%), 2 (high, >88%) |
 
