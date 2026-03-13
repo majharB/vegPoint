@@ -340,7 +340,7 @@ def parse_args() -> argparse.Namespace:
                         help="Model type: 'geo' (only geometry) or 'geo_int' (geometry + intensity)")
     parser.add_argument("--n_splits", type=int, default=10, help="Number of outer CV folds")
     parser.add_argument("--epochs", type=int, default=30, help="Number of training epochs per config")
-    parser.add_argument("--data_root", type=str, default="./data", help="Root data directory")
+    parser.add_argument("--data_root", type=str, default="../data", help="Root data directory")
     parser.add_argument("--results_root", type=str, default="./results", help="Root results directory")
     parser.add_argument("--fixed_lr", type=float, help="If provided, use fixed learning rate (skip inner search)")
     parser.add_argument("--fixed_dropout", type=float, help="If provided, use fixed dropout")
