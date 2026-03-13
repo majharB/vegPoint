@@ -33,7 +33,7 @@ Each sample is a point cloud of **5,000 points** (after resizing) with the follo
 | Field       | Description                                      |
 |-------------|--------------------------------------------------|
 | `x, y, z`   | 3D coordinates (normalized per segment)          |
-| `intensity` | Reflectance at the given LiDAR wavelength        |
+| `intensity` | Reflectance at the given LiDAR wavelength (1320 nm, 1450 nm or moisture index (MI)       |
 | `region`    | Core or periphery (derived from XY distance)     |
 | `moisture`  | Class: 0 (low, <35%), 1 (medium, 35‑88%), 2 (high, >88%) |
 
@@ -151,6 +151,8 @@ python scripts/train_spatial_transfer.py \
 ```
 
 ## 📝 Citation
+
+BibTeX
 ```
 @article{babor_2025_vegpoint,
   title={From 3D Points to Drying Insight: Hierarchical Deep Learning on LiDAR-Based Geometry and Spectra},
@@ -158,4 +160,8 @@ python scripts/train_spatial_transfer.py \
   journal={},
   year={2026}
 }
+```
+APA
+```
+Babor, M., Arefi, A., Sturm, B., Höhne, M. M.-C., & Zude-Sasse, M. (2025). From 3D points to drying insight: Hierarchical deep learning on LiDAR-based geometry and spectra. Manuscript submitted for publication.
 ```
