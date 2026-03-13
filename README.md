@@ -89,8 +89,8 @@ All experiments are organized as scripts in the scripts/ directory. The core mod
 Data preparation
 The dataset is automatically loaded and preprocessed by src/pcdata.py when you run any training script. No manual preprocessing is needed.
 
-### 3. Training a model
-#### 3a. standard random split
+### 4. Training a model
+#### 4a. standard random split
 Train a PointNet++ model on a broccoli/ mushrooms and wavelength intensity with a simple train/val/test split:
 
 ```
@@ -119,7 +119,7 @@ Options:
 
 --epochs, --cuda, etc.
 
-#### 3b. Nested cross‑validation
+#### 4b. Nested cross‑validation
 
 To perform 10‑fold nested CV with hyperparameter tuning (as used in the paper):
 
@@ -136,7 +136,7 @@ python scripts/cross_val.py \
 
 The script saves per‑fold results (test indices, best config, losses, predictions) in results/folds/<veg>/. The inner loop trains each configuration for 10 epochs; the best configuration is then evaluated on the test set.
 
-#### 3c. Spatial transfer experiments
+#### 4c. Spatial transfer experiments
 Train on one region and evaluate on the other (core→periphery or periphery→core) as reported in the paper:
 ```
 python scripts/train_spatial_transfer.py \
