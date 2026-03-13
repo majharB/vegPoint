@@ -18,7 +18,7 @@ This repository contains the code and dataset processing pipeline for our paper:
 Moisture content is a critical quality parameter in postharvest storage. Traditional spectral sensors capture only 2D information and miss the **3D geometric heterogeneity** of produce.  
 **VegPoint** is the first annotated 3D LiDAR dataset for broccoli and mushroom, providing:
 
-- **3D point clouds** with intensity at 1320 nm, 1450 nm, and a dual‑wavelength prototype (PT).
+- **3D point clouds** with intensity at 1320 nm, 1450 nm, and a dual‑wavelength moisture index (MI).
 - **Per‑segment** moisture labels for core and periphery regions (high/medium/low classes).
 - A complete pipeline for preprocessing, augmentation, and deep learning with PointNet++.
 
