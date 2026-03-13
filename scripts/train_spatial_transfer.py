@@ -258,7 +258,7 @@ def parse_args() -> argparse.Namespace:
                         help="Model type: 'geo' (only geometry) or 'geo_int' (geometry + intensity)")
     parser.add_argument("--epochs", type=int, default=30, help="Number of training epochs")
     parser.add_argument("--cuda", type=int, default=0, help="CUDA device ID")
-    parser.add_argument("--data_root", type=str, default="./data", help="Root data directory")
+    parser.add_argument("--data_root", type=str, default="../data", help="Root data directory")
     parser.add_argument("--results_root", type=str, default="./results", help="Root results directory")
     parser.add_argument("--seed", type=int, default=42, help="Random seed")
     return parser.parse_args()
