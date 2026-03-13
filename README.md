@@ -63,7 +63,7 @@ The file `mc.csv` must contain at least the columns: `sample_id`, `moisture_core
 
 ---
 
-## ⚙️ Installation
+## ⚙️ 🌱 💧 Installation and Moisture Prediction Experiments
 
 ### 1. Clone the repository
 ```bash
