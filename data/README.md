@@ -1,6 +1,6 @@
 # Data
 
-The dataset used in this research is **not included** in this repository due to its size.
+The dataset used in this research is not included in this repository.
 
 You can download the complete dataset from the following permanent identifier:
 
