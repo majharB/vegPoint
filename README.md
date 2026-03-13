@@ -154,7 +154,7 @@ python scripts/train_spatial_transfer.py \
 
 BibTeX
 ```
-@article{babor_2025_vegpoint,
+@article{babor_2026_vegpoint,
   title={From 3D Points to Drying Insight: Hierarchical Deep Learning on LiDAR-Based Geometry and Spectra},
   author={Babor, M. and Arefi, A. and Sturm, B. and Höhne, M. M.-C. and Zude-Sasse, M.},
   journal={},
