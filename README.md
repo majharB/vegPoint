@@ -134,7 +134,7 @@ python scripts/cross_val.py \
     --epochs 30
 ```
 
-The script saves per‑fold results (test indices, best config, losses, predictions) in results/folds/<veg>/. The inner loop trains each configuration for 10 epochs; the best configuration is then evaluated on the test set.
+The script saves per‑fold results (test indices, best config, losses, predictions) in results/folds/mushroom/. The inner loop trains each configuration for 10 epochs; the best configuration is then evaluated on the test set.
 
 #### 4c. Spatial transfer experiments
 Train on one region and evaluate on the other (core→periphery or periphery→core) as reported in the paper:
@@ -157,11 +157,11 @@ BibTeX
 @article{babor_2026_vegpoint,
   title={From 3D Points to Drying Insight: Hierarchical Deep Learning on LiDAR-Based Geometry and Spectra},
   author={Babor, M. and Arefi, A. and Sturm, B. and Höhne, M. M.-C. and Zude-Sasse, M.},
-  journal={},
+  journal={Manuscript submitted for publication.},
   year={2026}
 }
 ```
 APA
 ```
-Babor, M., Arefi, A., Sturm, B., Höhne, M. M.-C., & Zude-Sasse, M. (2025). From 3D points to drying insight: Hierarchical deep learning on LiDAR-based geometry and spectra. Manuscript submitted for publication.
+Babor, M., Arefi, A., Sturm, B., Höhne, M. M.-C., & Zude-Sasse, M. (2026). From 3D points to drying insight: Hierarchical deep learning on LiDAR-based geometry and spectra. Manuscript submitted for publication.
 ```
