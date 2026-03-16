@@ -8,7 +8,7 @@
 This repository contains the code and dataset processing pipeline for our paper:
 
 > **From 3D Points to Drying Insight: Hierarchical Deep Learning on LiDAR-Based Geometry and Spectra**  
-> Majharulislam Babor, Arman Arefi, Barbara Sturm, Marina M.-C. Höhne, Manuela Zude-Sasse  
+> Majharulislam Babor, Arman Arefi, Barbara Sturm, Valentin Vierhub-Lorenz, Marina M.-C. Höhne, Manuela Zude-Sasse  
 > *Submitted, 2026*
 
 ---
@@ -156,12 +156,12 @@ BibTeX
 ```
 @article{babor_2026_vegpoint,
   title={From 3D Points to Drying Insight: Hierarchical Deep Learning on LiDAR-Based Geometry and Spectra},
-  author={Babor, M. and Arefi, A. and Sturm, B. and Höhne, M. M.-C. and Zude-Sasse, M.},
+  author={Babor, M. and Arefi, A. and Sturm, B. and Vierhub-Lorenz, V. and Höhne, M. M.-C. and Zude-Sasse, M.},
   journal={Manuscript submitted for publication.},
   year={2026}
 }
 ```
 APA
 ```
-Babor, M., Arefi, A., Sturm, B., Höhne, M. M.-C., & Zude-Sasse, M. (2026). From 3D points to drying insight: Hierarchical deep learning on LiDAR-based geometry and spectra. Manuscript submitted for publication.
+Babor, M., Arefi, A., Sturm, B., Vierhub-Lorenz, V., Höhne, M. M.-C., & Zude-Sasse, M. (2026). From 3D points to drying insight: Hierarchical deep learning on LiDAR-based geometry and spectra. Manuscript submitted for publication.
 ```
